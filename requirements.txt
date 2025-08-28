@@ -1,0 +1,68 @@
+# Video Processing Web Application Requirements
+# ============================================
+# 
+# This file contains all Python package dependencies required to run
+# the video processing web application with face detection and overlay features.
+#
+# Installation: pip install -r requirements.txt
+# Recommended: Use a virtual environment for isolation
+
+# Web Framework
+# -------------
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Computer Vision and Image Processing
+# ------------------------------------
+opencv-python==4.8.1.78
+numpy==1.24.3
+
+# Video Processing and Audio Extraction
+# -------------------------------------
+moviepy==1.0.3
+
+# MoviePy Dependencies (automatically installed but listed for reference)
+# ----------------------------------------------------------------------
+imageio==2.31.5
+imageio-ffmpeg==0.4.9
+decorator==4.4.2
+tqdm==4.66.1
+requests==2.31.0
+
+# Additional Dependencies for MoviePy
+# -----------------------------------
+pillow==10.0.1
+
+# Development and Testing (Optional)
+# ----------------------------------
+# Uncomment these if you need development tools
+# pytest==7.4.3
+# pytest-flask==1.3.0
+# black==23.9.1
+# flake8==6.1.0
+
+# System Requirements Notes:
+# -------------------------
+# 1. FFmpeg is required for video processing (install separately)
+#    - Windows: Download from https://ffmpeg.org/download.html
+#    - macOS: brew install ffmpeg
+#    - Linux: sudo apt-get install ffmpeg
+#
+# 2. For better performance, consider installing:
+#    - opencv-contrib-python (extended OpenCV features)
+#    - dlib (advanced facial landmark detection)
+#
+# 3. Minimum Python version: 3.8+
+# 4. Recommended Python version: 3.9 or 3.10
+
+# Optional Enhanced Face Detection (Advanced)
+# ------------------------------------------
+# Uncomment if you want to add dlib support for more precise landmarks
+# dlib==19.24.2
+# cmake==3.27.7  # Required for dlib compilation
+
+# Production Deployment (Optional)
+# --------------------------------
+# Uncomment these for production deployment
+# gunicorn==21.2.0
+# waitress==2.1.2
