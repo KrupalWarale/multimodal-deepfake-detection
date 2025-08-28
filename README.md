@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Synchronous Video Processing App
 
 A minimal Flask web application for synchronous video processing - extracts audio and frames from uploaded videos.
@@ -49,3 +50,6 @@ A minimal Flask web application for synchronous video processing - extracts audi
 ```
 
 The project works entirely synchronously as requested.
+=======
+# multimodal-deepfake-detection
+>>>>>>> 851eb920e80e8575ab2e571a5fe1a79938f2f054
