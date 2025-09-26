@@ -831,9 +831,6 @@
             <div class="upload-section">
                 <h2><span class="icon">📁</span> Upload Video</h2>
                 <p>Select a video file to extract audio and frames</p>
-                <p style="color: #6c757d; font-size: 0.9em; margin-top: 10px;">
-                    ⚠️ Note: For optimal performance, videos longer than 2 minutes will be automatically limited to the first 2 minutes.
-                </p>
                 
                 <div class="file-input-wrapper">
                     <input type="file" id="videoFile" class="file-input" accept="video/*" title="Select video file" />
@@ -1055,7 +1052,7 @@
             let statusText = 'Extract audio and frames from your videos';
             
             if (status.features.audio_deepfake_detection) {
-                statusText += ' with RawNetLite audio deepfake detection';
+                statusText += ' with RawNetLite audio deepfake and mobileNetV2 for image deepfake detection';
             } else {
                 statusText += ' (Video deepfake detection only - install PyTorch for audio analysis)';
             }
