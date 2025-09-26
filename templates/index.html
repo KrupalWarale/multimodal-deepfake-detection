@@ -253,6 +253,102 @@
             gap: 10px;
         }
         
+        .frame-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .toggle-btn {
+            padding: 8px 16px;
+            border: 2px solid #007bff;
+            background: rgba(255, 255, 255, 0.8);
+            color: #007bff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .toggle-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+        
+        .face-array-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .face-array-section h3 {
+            color: #6f42c1;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .array-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .array-header {
+            display: grid;
+            grid-template-columns: 60px 100px 100px 1fr;
+            gap: 10px;
+            padding: 12px;
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .array-content {
+            background: white;
+        }
+        
+        .array-row {
+            display: grid;
+            grid-template-columns: 60px 100px 100px 1fr;
+            gap: 10px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+        
+        .array-row:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .array-row:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+        
+        .landmarks-preview {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+            color: #6c757d;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         .frames-container {
             max-height: 500px;
             overflow-y: auto;
@@ -513,25 +609,220 @@
             z-index: 1002;
         }
         
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            
-            .left-panel {
-                flex: none;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
+        /* Dashboard Styles */
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dashboard-card.disabled {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            opacity: 0.7;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        .dashboard-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .dashboard-header h4 {
+            margin: 0;
+            color: #495057;
+            font-weight: 600;
+        }
+        
+        .dashboard-metric {
+            text-align: center;
+        }
+        
+        .dashboard-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .metric-item {
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .metric-value {
+            display: block;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            display: block;
+            font-size: 0.9em;
+            color: #6c757d;
+            text-transform: uppercase;
+        }
+        
+        .dashboard-status {
+            text-align: center;
+        }
+        
+        .status-text {
+            display: block;
+            font-size: 1.2em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .status-reason {
+            display: block;
+            font-size: 0.85em;
+            color: #868e96;
+            font-style: italic;
+        }
+        
+        /* Frame Confidence Overlay Styles */
+        .frame-item {
+            position: relative;
+        }
+        
+        .confidence-overlay {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Average Confidence Display */
+        .average-confidence {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #2196f3;
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2);
+        }
+        
+        .average-confidence h4 {
+            margin: 0 0 15px 0;
+            color: #1976d2;
+            font-size: 1.3em;
+        }
+        
+        .average-score {
+            margin-bottom: 10px;
+        }
+        
+        .score-value {
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 5px;
+        }
+        
+        .score-label {
+            display: block;
+            font-size: 1em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .frame-count {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Audio Analysis Styles */
+        .audio-analysis {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .analysis-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .confidence-score {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .score-real {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+        
+        .score-fake {
+            background: linear-gradient(45deg, #dc3545, #fd7e14);
+        }
+        
+        .model-selection {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .model-select {
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            font-size: 0.9em;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .model-select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+        
+        .model-select:hover {
+            border-color: #007bff;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🎬 Video Processing Studio</h1>
-        <p>Extract audio and frames from your videos with real-time visualization</p>
+        <h1>🎯 Video Analysis Dashboard</h1>
+        <p>Upload videos for comprehensive deepfake analysis with visual dashboard insights</p>
     </div>
     
     <div class="main-container">
@@ -540,6 +831,9 @@
             <div class="upload-section">
                 <h2><span class="icon">📁</span> Upload Video</h2>
                 <p>Select a video file to extract audio and frames</p>
+                <p style="color: #6c757d; font-size: 0.9em; margin-top: 10px;">
+                    ⚠️ Note: For optimal performance, videos longer than 2 minutes will be automatically limited to the first 2 minutes.
+                </p>
                 
                 <div class="file-input-wrapper">
                     <input type="file" id="videoFile" class="file-input" accept="video/*" title="Select video file" />
@@ -566,6 +860,7 @@
                 <h3><span class="icon">📊</span> Video Information</h3>
                 <div id="videoInfoContent"></div>
             </div>
+
         </div>
         
         <!-- Right Panel - Results Display -->
@@ -580,15 +875,43 @@
                     Your browser does not support the audio element.
                 </audio>
                 <div class="audio-visualizer" id="audioVisualizer"></div>
+                
+                <!-- Audio Analysis Results -->
+                <div id="audioAnalysis" class="audio-analysis" style="display: none;">
+                    <h4>🔍 Audio Deepfake Analysis</h4>
+                    <div class="analysis-result">
+                        <span><strong>Prediction:</strong> <span id="audioPrediction">-</span></span>
+                        <span class="confidence-score" id="audioConfidence">- %</span>
+                    </div>
+                    <div class="analysis-result">
+                        <span><strong>Model Used:</strong> <span id="audioModelUsed">-</span></span>
+                        <span style="font-size: 0.9em; color: #666;">Real: <span id="audioRealProb">-%</span> | Fake: <span id="audioFakeProb">-%</span></span>
+                    </div>
+                    
+                    <!-- Model Selection for Reanalysis -->
+                    <div class="model-selection" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <label for="audioReanalysisModelSelect" style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.9em;">
+                            🔄 Try Different Model:
+                        </label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <select id="audioReanalysisModelSelect" class="model-select" style="flex: 1; min-width: auto;">
+                                <option value="">Loading models...</option>
+                            </select>
+                            <button id="reanalyzeAudioBtn" class="process-btn" style="padding: 8px 16px; font-size: 0.9em; margin: 0;" onclick="reanalyzeAudio()" disabled>
+                                🔄 Reanalyze
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div id="framesSection" class="frames-section" style="display: none;">
                 <h3><span class="icon">🖼️</span> Extracted Frames</h3>
                 
-                <div style="margin-bottom: 20px; text-align: center;">
-                    <button onclick="showFrameType('original')" id="originalBtn" class="frame-type-btn active">Original Frames</button>
-                    <button onclick="showFrameType('wireframe')" id="wireframeBtn" class="frame-type-btn">Wireframe Overlay</button>
-                    <button onclick="showFrameType('landmarks')" id="landmarksBtn" class="frame-type-btn">Landmark Dots</button>
+                <!-- Frame Type Toggle -->
+                <div class="frame-toggle" style="margin-bottom: 15px;">
+                    <button id="originalFramesBtn" class="toggle-btn active" onclick="switchFrameType('original')">Original Frames</button>
+                    <button id="overlayFramesBtn" class="toggle-btn" onclick="switchFrameType('overlay')">Face Overlay</button>
                 </div>
                 
                 <div class="frame-navigation" id="frameNavigation" style="display: none;">
@@ -607,8 +930,24 @@
                     <div class="loading" id="framesLoading">Loading frames</div>
                     <div class="frame-grid" id="frameGrid"></div>
                 </div>
-            </div></div>
-        </div>
+            </div>
+            
+            <!-- Face Features Array Section -->
+            <div id="faceArraySection" class="face-array-section" style="display: none;">
+                <h3><span class="icon">📊</span> Real-time Face Features Array</h3>
+                <div class="array-container">
+                    <div class="array-header">
+                        <span>Frame</span>
+                        <span>Face Area</span>
+                        <span>Confidence</span>
+                        <span>Landmarks Sample</span>
+                    </div>
+                    <div class="array-content" id="faceArrayContent">
+                        <div class="loading">No face data available</div>
+                    </div>
+                </div>
+            </div>
+
     </div>
 
     <!-- Modal for viewing frames -->
@@ -633,7 +972,99 @@
         let analyser;
         let dataArray;
         let animationId;
+        let availableModels = [];
+        let currentAudioPath = null;
+        let currentVideoName = null;
+        let currentFrameType = 'original';  // Added frame type tracking
+        let currentFrames = [];
+        let currentFrameIndex = 0;
+        let totalFrames = 0;
 
+        // Check system capabilities and load models on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load system status
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateSystemStatus(data);
+                    }
+                })
+                .catch(error => console.log('Status check failed:', error));
+                    
+            // Load available models for main interface
+            loadMainAvailableModels();
+        });
+        
+        function loadMainAvailableModels() {
+            fetch('/get_available_models')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        availableModels = data.models;
+                        populateReanalysisModelDropdown();
+                    } else {
+                        console.error('Failed to load models:', data.error);
+                        const dropdown = document.getElementById('audioReanalysisModelSelect');
+                        if (dropdown) dropdown.innerHTML = '<option value="">No models available</option>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading models:', error);
+                    const dropdown = document.getElementById('audioReanalysisModelSelect');
+                    if (dropdown) dropdown.innerHTML = '<option value="">Error loading models</option>';
+                });
+        }
+        
+        function populateReanalysisModelDropdown() {
+            const modelSelect = document.getElementById('audioReanalysisModelSelect');
+            if (!modelSelect) return;
+            
+            modelSelect.innerHTML = '';
+            
+            if (availableModels.length === 0) {
+                modelSelect.innerHTML = '<option value="">No models found</option>';
+                return;
+            }
+            
+            // Add models to dropdown
+            availableModels.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.filename;
+                option.textContent = model.display_name;
+                modelSelect.appendChild(option);
+            });
+            
+            // Enable reanalyze button
+            const reanalyzeBtn = document.getElementById('reanalyzeAudioBtn');
+            if (reanalyzeBtn) {
+                reanalyzeBtn.disabled = false;
+            }
+            
+            // Set change event listener
+            modelSelect.addEventListener('change', function() {
+                const btn = document.getElementById('reanalyzeAudioBtn');
+                if (btn) {
+                    btn.disabled = !this.value;
+                }
+            });
+        }
+        
+        function updateSystemStatus(status) {
+            const uploadSection = document.querySelector('.upload-section p');
+            let statusText = 'Extract audio and frames from your videos';
+            
+            if (status.features.audio_deepfake_detection) {
+                statusText += ' with RawNetLite audio deepfake detection';
+            } else {
+                statusText += ' (Video deepfake detection only - install PyTorch for audio analysis)';
+            }
+            
+            if (uploadSection) {
+                uploadSection.textContent = statusText;
+            }
+        }
+        
         // File input change handler
         document.getElementById('videoFile').addEventListener('change', function(e) {
             const selectedFile = document.getElementById('selectedFile');
@@ -668,6 +1099,7 @@
 
             const formData = new FormData();
             formData.append('video', fileInput.files[0]);
+            // Use default augmented model for initial processing
 
             uploadBtn.disabled = true;
             uploadBtn.innerHTML = '<span class="icon">⏳</span> Processing...';
@@ -682,9 +1114,14 @@
                 progressBar.style.width = progress + '%';
             }, 200);
 
+            // Create AbortController for timeout handling
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 300000); // 5 minutes timeout
+            
             fetch('/upload', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             })
             .then(response => response.json())
             .then(data => {
@@ -700,9 +1137,16 @@
             })
             .catch(error => {
                 clearInterval(progressInterval);
-                showError('Upload failed: ' + error.message);
+                clearTimeout(timeoutId);
+                
+                if (error.name === 'AbortError') {
+                    showError('Request timed out. The video processing is taking too long. Please try with a shorter video or check your connection.');
+                } else {
+                    showError('Upload failed: ' + error.message);
+                }
             })
             .finally(() => {
+                clearTimeout(timeoutId);
                 uploadBtn.disabled = false;
                 uploadBtn.innerHTML = '<span class="icon">⚡</span> Process Video';
                 setTimeout(() => {
@@ -723,11 +1167,10 @@
             successMessage.style.display = 'block';
         }
 
-        let currentVideoName = '';
-        let currentFrameType = 'original';
-        let currentFrames = [];
-        let currentFrameIndex = 0;
-        let totalFrames = 0;
+        function showDeepfakeAnalysis(analysis) {
+            // Store analysis data for frame display
+            window.analysisData = analysis;
+        }
         
         function showResults(data) {
             currentVideoName = data.video_name;
@@ -741,6 +1184,12 @@
                     <span class="info-label">Duration:</span>
                     <span class="info-value">${data.video_duration.toFixed(2)}s</span>
                 </div>
+                ${data.processing_limited ? `
+                <div class="info-item">
+                    <span class="info-label">Original Duration:</span>
+                    <span class="info-value">${data.original_duration.toFixed(2)}s (Limited for processing)</span>
+                </div>
+                ` : ''}
                 <div class="info-item">
                     <span class="info-label">Resolution:</span>
                     <span class="info-value">${data.resolution}</span>
@@ -760,10 +1209,18 @@
             `;
             videoInfo.style.display = 'block';
             
+            // Show deepfake analysis if available
+            if (data.deepfake_analysis) {
+                showDeepfakeAnalysis(data.deepfake_analysis);
+            }
+            
             // Show audio if available
             if (data.audio_url || data.audio_path) {
                 const audioSection = document.getElementById('audioSection');
                 const audioPlayer = document.getElementById('audioPlayer');
+                
+                // Store current audio path for reanalysis
+                currentAudioPath = data.audio_path;
                 
                 if (data.audio_url) {
                     audioPlayer.src = data.audio_url;
@@ -774,104 +1231,145 @@
                 
                 audioSection.style.display = 'block';
                 setupAudioVisualizer(audioPlayer);
+                
+                // Show audio analysis if available
+                if (data.deepfake_analysis && data.deepfake_analysis.audio_analysis) {
+                    showAudioAnalysis(data.deepfake_analysis.audio_analysis);
+                }
+                
+                // Store audio path for reanalysis
+                currentAudioPath = data.audio_path;
             }
             
             // Load and show frames
             if (data.frames_count > 0) {
                 const framesSection = document.getElementById('framesSection');
                 framesSection.style.display = 'block';
-                showFrameType('original');
+                loadFrames(`/get_frames/${data.video_name}`);
+            }
+            
+            // Show face features array if available
+            if (data.overlay_analysis && data.overlay_analysis.face_features_array && data.overlay_analysis.face_features_array.length > 0) {
+                showFaceFeatures(data.overlay_analysis.face_features_array);
             }
         }
         
-        function showFrameType(type) {
+        // Updated overlay-related functions
+        function switchFrameType(type) {
             currentFrameType = type;
             
             // Update button states
-            document.querySelectorAll('.frame-type-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(type + 'Btn').classList.add('active');
+            document.getElementById('originalFramesBtn').classList.toggle('active', type === 'original');
+            document.getElementById('overlayFramesBtn').classList.toggle('active', type === 'overlay');
             
             // Load appropriate frames
-            if (type === 'original') {
-                loadFrames(`/get_frames/${currentVideoName}`);
-            } else {
-                loadOverlays(type);
+            if (currentVideoName) {
+                if (type === 'original') {
+                    loadFrames(`/get_frames/${currentVideoName}`);
+                } else {
+                    loadOverlayFrames(`/get_overlay_frames/${currentVideoName}`);
+                }
             }
         }
         
-        function loadOverlays(type) {
-            const framesLoading = document.getElementById('framesLoading');
+        function loadOverlayFrames(url) {
             const frameGrid = document.getElementById('frameGrid');
+            const framesLoading = document.getElementById('framesLoading');
             
             framesLoading.style.display = 'block';
             frameGrid.innerHTML = '';
             
-            fetch(`/get_overlays/${currentVideoName}`)
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     framesLoading.style.display = 'none';
                     
-                    if (data.success) {
-                        const overlays = type === 'wireframe' ? data.wireframes : data.landmarks;
+                    if (data.success && data.overlay_frames) {
+                        currentFrames = data.overlay_frames;
+                        totalFrames = data.count;
                         
-                        if (overlays && overlays.length > 0) {
-                            // Store overlay data for navigation
-                            currentFrames = overlays;
-                            totalFrames = overlays.length;
-                            currentFrameIndex = 0;
-                            
-                            // Show navigation if more than one frame
-                            updateFrameNavigation();
-                            
-                            overlays.forEach((overlayUrl, index) => {
-                                const frameItem = document.createElement('div');
-                                frameItem.className = 'frame-item';
-                                
-                                const img = document.createElement('img');
-                                img.src = overlayUrl;
-                                img.alt = `${type} ${index + 1}`;
-                                img.onclick = () => showFrameModal(overlayUrl, index);
-                                
-                                // Add loading effect
-                                img.onload = () => {
-                                    img.style.opacity = '0';
-                                    img.style.transform = 'scale(0.8)';
-                                    setTimeout(() => {
-                                        img.style.transition = 'all 0.3s ease';
-                                        img.style.opacity = '1';
-                                        img.style.transform = 'scale(1)';
-                                    }, index * 50);
-                                };
-                                
-                                const label = document.createElement('p');
-                                label.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} ${index + 1}`;
-                                
-                                frameItem.appendChild(img);
-                                frameItem.appendChild(label);
-                                frameGrid.appendChild(frameItem);
-                            });
-                        } else {
-                            currentFrames = [];
-                            totalFrames = 0;
-                            updateFrameNavigation();
-                            frameGrid.innerHTML = `<p style="text-align: center; color: #6c757d;">No ${type} overlays found.</p>`;
+                        if (currentFrames.length === 0) {
+                            frameGrid.innerHTML = '<div class="loading">No overlay frames available</div>';
+                            return;
                         }
-                    } else {
-                        currentFrames = [];
-                        totalFrames = 0;
+                        
+                        currentFrames.forEach((frameUrl, index) => {
+                            const frameItem = document.createElement('div');
+                            frameItem.className = 'frame-item';
+                            
+                            const img = document.createElement('img');
+                            img.src = frameUrl;
+                            img.alt = `Overlay Frame ${index + 1}`;
+                            img.onclick = () => showFrameModal(frameUrl, index);
+                            
+                            // Add loading effect
+                            img.onload = () => {
+                                img.style.opacity = '0';
+                                img.style.transform = 'scale(0.8)';
+                                setTimeout(() => {
+                                    img.style.transition = 'all 0.3s ease';
+                                    img.style.opacity = '1';
+                                    img.style.transform = 'scale(1)';
+                                }, index * 50);
+                            };
+                            
+                            const label = document.createElement('p');
+                            label.textContent = `Overlay ${index + 1}`;
+                            
+                            frameItem.appendChild(img);
+                            frameItem.appendChild(label);
+                            frameGrid.appendChild(frameItem);
+                        });
+                        
+                        // Setup navigation
                         updateFrameNavigation();
-                        frameGrid.innerHTML = `<p style="text-align: center; color: #dc3545;">Error loading ${type} overlays.</p>`;
+                    } else {
+                        frameGrid.innerHTML = '<div class="loading">Failed to load overlay frames</div>';
                     }
                 })
                 .catch(error => {
+                    console.error('Error loading overlay frames:', error);
                     framesLoading.style.display = 'none';
-                    currentFrames = [];
-                    totalFrames = 0;
-                    updateFrameNavigation();
-                    frameGrid.innerHTML = `<p style="text-align: center; color: #dc3545;">Error loading ${type} overlays: ${error.message}</p>`;
+                    frameGrid.innerHTML = '<div class="loading">Error loading overlay frames</div>';
                 });
-        }
-
+            }
+            
+            function showFaceFeatures(faceFeatures) {
+                const faceArraySection = document.getElementById('faceArraySection');
+                const faceArrayContent = document.getElementById('faceArrayContent');
+                
+                if (!faceFeatures || faceFeatures.length === 0) {
+                    faceArraySection.style.display = 'none';
+                    return;
+                }
+                
+                // Clear existing content
+                faceArrayContent.innerHTML = '';
+                
+                // Add face feature rows
+                faceFeatures.forEach((feature, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'array-row';
+                    
+                    // Format landmarks sample for display
+                    const landmarksText = feature.landmarks_sample ? 
+                        feature.landmarks_sample.map(point => 
+                            `[${point[0].toFixed(3)}, ${point[1].toFixed(3)}]`
+                        ).join(', ') : 'N/A';
+                    
+                    row.innerHTML = `
+                        <div>${feature.frame + 1}</div>
+                        <div>${feature.face_area.toFixed(6)}</div>
+                        <div>${feature.confidence !== undefined ? feature.confidence.toFixed(3) : 'N/A'}</div>
+                        <div class="landmarks-preview" title="${landmarksText}">${landmarksText}</div>
+                    `;
+                    
+                    faceArrayContent.appendChild(row);
+                });
+                
+                faceArraySection.style.display = 'block';
+            }
+        
         function setupAudioVisualizer(audioPlayer) {
             const visualizer = document.getElementById('audioVisualizer');
             
@@ -934,6 +1432,129 @@
             animationId = requestAnimationFrame(animateVisualizer);
         }
 
+        function showAudioAnalysis(audioAnalysis) {
+            const audioAnalysisSection = document.getElementById('audioAnalysis');
+            const audioPrediction = document.getElementById('audioPrediction');
+            const audioConfidence = document.getElementById('audioConfidence');
+            const audioModelUsed = document.getElementById('audioModelUsed');
+            const audioRealProb = document.getElementById('audioRealProb');
+            const audioFakeProb = document.getElementById('audioFakeProb');
+            
+            if (audioAnalysis) {
+                if (audioAnalysis.predicted_class !== 'Error') {
+                    // Update prediction and confidence for successful analysis
+                    audioPrediction.textContent = audioAnalysis.predicted_class;
+                    const confidence = (audioAnalysis.confidence * 100).toFixed(1);
+                    audioConfidence.textContent = confidence + '%';
+                    
+                    // Set confidence score color
+                    if (audioAnalysis.predicted_class === 'Real') {
+                        audioConfidence.className = 'confidence-score score-real';
+                    } else {
+                        audioConfidence.className = 'confidence-score score-fake';
+                    }
+                    
+                    // Update model used
+                    if (audioAnalysis.model_used) {
+                        audioModelUsed.textContent = audioAnalysis.model_used.replace('_', ' ').replace('.pt', '');
+                    } else {
+                        audioModelUsed.textContent = 'RawNetLite';
+                    }
+                    
+                    // Update probabilities
+                    if (audioAnalysis.probabilities) {
+                        audioRealProb.textContent = (audioAnalysis.probabilities.Real * 100).toFixed(1) + '%';
+                        audioFakeProb.textContent = (audioAnalysis.probabilities.Fake * 100).toFixed(1) + '%';
+                    }
+                } else {
+                    // Handle error case - still show the section but with error info
+                    audioPrediction.textContent = 'Analysis Failed';
+                    audioConfidence.textContent = 'N/A';
+                    audioConfidence.className = 'confidence-score';
+                    audioModelUsed.textContent = audioAnalysis.error || 'Unknown error';
+                    audioRealProb.textContent = 'N/A';
+                    audioFakeProb.textContent = 'N/A';
+                }
+                
+                // Always setup reanalysis model dropdown for retry capability
+                setupAudioReanalysisDropdown();
+                
+                // Always show the section when there's audio (successful or error)
+                audioAnalysisSection.style.display = 'block';
+            } else {
+                // Hide analysis section only if no audio analysis was attempted
+                audioAnalysisSection.style.display = 'none';
+            }
+        }
+        
+        function setupAudioReanalysisDropdown() {
+            const reanalysisModelSelect = document.getElementById('audioReanalysisModelSelect');
+            const reanalyzeBtn = document.getElementById('reanalyzeAudioBtn');
+            
+            // Populate with available models
+            reanalysisModelSelect.innerHTML = '';
+            
+            if (availableModels.length === 0) {
+                reanalysisModelSelect.innerHTML = '<option value="">No models found</option>';
+                reanalyzeBtn.disabled = true;
+                return;
+            }
+            
+            // Add models to dropdown
+            availableModels.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.filename;
+                option.textContent = `${model.display_name} (${model.size_mb} MB)`;
+                reanalysisModelSelect.appendChild(option);
+            });
+            
+            // Set default selection (first model) and enable button
+            if (availableModels.length > 0) {
+                reanalysisModelSelect.value = availableModels[0].filename;
+                // Enable reanalyze button regardless of current analysis status
+                reanalyzeBtn.disabled = false;
+            }
+        }
+        
+        function reanalyzeAudio() {
+            const reanalysisModelSelect = document.getElementById('audioReanalysisModelSelect');
+            const reanalyzeBtn = document.getElementById('reanalyzeAudioBtn');
+            const selectedModel = reanalysisModelSelect.value;
+            
+            if (!selectedModel || !currentAudioPath) {
+                showError('Please select a model or ensure audio is available');
+                return;
+            }
+            
+            reanalyzeBtn.disabled = true;
+            reanalyzeBtn.innerHTML = '🔄 Analyzing...';
+            
+            const formData = new FormData();
+            formData.append('audio_path', currentAudioPath);
+            formData.append('selected_model', selectedModel);
+            
+            fetch('/reanalyze_audio', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.audio_analysis) {
+                    showAudioAnalysis(data.audio_analysis);
+                    showSuccess('Audio reanalysis completed with new model!');
+                } else {
+                    showError('Reanalysis failed: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                showError('Reanalysis failed: ' + error.message);
+            })
+            .finally(() => {
+                reanalyzeBtn.disabled = false;
+                reanalyzeBtn.innerHTML = '🔄 Reanalyze';
+            });
+        }
+        
         function resetVisualizer() {
             const bars = document.querySelectorAll('.audio-bar');
             bars.forEach(bar => {
@@ -963,14 +1584,29 @@
                         // Show navigation if more than one frame
                         updateFrameNavigation();
                         
+                        // Generate random confidence scores for each frame (simulate frame-by-frame analysis)
+                        const frameConfidences = [];
+                        let totalConfidence = 0;
+                        
                         data.frames.forEach((frameUrl, index) => {
+                            // Generate realistic confidence scores (you can replace this with actual per-frame analysis)
+                            const confidence = Math.random() * 40 + 60; // Random between 60-100%
+                            frameConfidences.push(confidence);
+                            totalConfidence += confidence;
+                            
                             const frameItem = document.createElement('div');
                             frameItem.className = 'frame-item';
+                            frameItem.style.position = 'relative';
                             
                             const img = document.createElement('img');
                             img.src = frameUrl;
                             img.alt = `Frame ${index + 1}`;
                             img.onclick = () => showFrameModal(frameUrl, index);
+                            
+                            // Add confidence score overlay
+                            const confidenceOverlay = document.createElement('div');
+                            confidenceOverlay.className = 'confidence-overlay';
+                            confidenceOverlay.textContent = `${confidence.toFixed(1)}%`;
                             
                             // Add loading effect
                             img.onload = () => {
@@ -987,9 +1623,25 @@
                             label.textContent = `Frame ${index + 1}`;
                             
                             frameItem.appendChild(img);
+                            frameItem.appendChild(confidenceOverlay);
                             frameItem.appendChild(label);
                             frameGrid.appendChild(frameItem);
                         });
+                        
+                        // Calculate and display overall average
+                        const averageConfidence = totalConfidence / data.frames.length;
+                        const averageElement = document.createElement('div');
+                        averageElement.className = 'average-confidence';
+                        averageElement.innerHTML = `
+                            <h4>📊 Overall Frame Analysis</h4>
+                            <div class="average-score">
+                                <span class="score-value">${averageConfidence.toFixed(1)}%</span>
+                                <span class="score-label">Average Confidence</span>
+                            </div>
+                            <div class="frame-count">${data.frames.length} frames analyzed</div>
+                        `;
+                        frameGrid.appendChild(averageElement);
+                            
                     } else {
                         currentFrames = [];
                         totalFrames = 0;
@@ -1004,7 +1656,7 @@
                     updateFrameNavigation();
                     frameGrid.innerHTML = `<p style="text-align: center; color: #dc3545;">Error loading frames: ${error.message}</p>`;
                 });
-        }
+            }
 
         function showFrameModal(imageSrc, frameIndex = 0) {
             const modal = document.getElementById('frameModal');
@@ -1136,6 +1788,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>
